@@ -6,8 +6,8 @@ namespace FluToDoApp.Data
 {
     public interface IToDoApiServiceAgent
     {
-        Task<List<ToDoItem>> GetAllToDoItemsAsync();
-        Task AddToDoItemAsync(ToDoItem item);
         Task DeleteToDoItemAsync(string key);
+        Task<List<ToDoItem>> GetAllToDoItemsAsync();
+        Task SaveToDoItemAsync(ToDoItem item, bool isNewItem = false);
     }
 }

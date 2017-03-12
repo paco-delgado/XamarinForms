@@ -21,7 +21,7 @@ namespace FluToDoApp.Data
             return Task.FromResult(list);
         }
 
-        public Task AddToDoItemAsync(ToDoItem item)
+        public Task SaveToDoItemAsync(ToDoItem item, bool isNewItem = false)
         {
             return Task.FromResult(true);
         }

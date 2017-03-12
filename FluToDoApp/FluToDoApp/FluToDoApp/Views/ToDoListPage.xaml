@@ -4,7 +4,7 @@
              x:Class="FluToDoApp.Views.ToDoListPage"
              BindingContext="{Binding ToDoListViewModel, Source={StaticResource Locator}}">
     <StackLayout>
-        <ListView ItemsSource="{Binding ToDoItems}">
+        <ListView ItemsSource="{Binding ToDoItems}" ItemTapped="ListView_ItemTapped" ItemSelected="ListView_ItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

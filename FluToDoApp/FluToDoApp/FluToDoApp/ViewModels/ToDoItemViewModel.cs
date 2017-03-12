@@ -10,7 +10,16 @@ namespace FluToDoApp.ViewModels
     public class ToDoItemViewModel : BaseViewModel
     {
         public string Key { get; set; }
-        public bool IsComplete { get; set; }
+
+        private bool _isComplete;
+        public bool IsComplete
+        {
+            get { return _isComplete; }
+            set
+            {
+                SetValue(ref _isComplete, value);
+            }
+        }
 
         private string _name;
         public string Name
@@ -29,8 +38,10 @@ namespace FluToDoApp.ViewModels
         public ToDoItemViewModel(ToDoItem toDoItem)
         {
             Key = toDoItem.Key;
-            Name = toDoItem.Name;
-            IsComplete = toDoItem.IsComplete;
+            // We use the private field directly when initializing the object
+			// because we don't want this to raise a notification. 
+            _name = toDoItem.Name;
+            _isComplete = toDoItem.IsComplete;
         }
     }
 }

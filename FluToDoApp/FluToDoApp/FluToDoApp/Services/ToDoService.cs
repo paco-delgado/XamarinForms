@@ -23,12 +23,17 @@ namespace FluToDoApp.Services
         }
         public async Task AddToDoItemAsync(ToDoItem item)
         {
-            await _toDoApiServiceAgent.AddToDoItemAsync(item);
+            await _toDoApiServiceAgent.SaveToDoItemAsync(item);
         }
 
         public async Task DeleteToDoItemAsync(string key)
         {
             await _toDoApiServiceAgent.DeleteToDoItemAsync(key);
+        }
+
+        public async Task UpdateToDoItemStateAsync(ToDoItem item)
+        {
+            await _toDoApiServiceAgent.SaveToDoItemAsync(item, true);
         }
     }
 }

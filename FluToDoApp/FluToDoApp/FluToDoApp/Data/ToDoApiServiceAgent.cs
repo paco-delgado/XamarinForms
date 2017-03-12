@@ -41,14 +41,22 @@ namespace FluToDoApp.Data
             return toDoItemsList;
         }
 
-        public async Task AddToDoItemAsync(ToDoItem item)
+        public async Task SaveToDoItemAsync(ToDoItem item, bool isNewItem = false)
         {
             try
             {
                 string jsonItem = JsonConvert.SerializeObject(item);
                 StringContent content = new StringContent(jsonItem, Encoding.UTF8, JsonMediaType);
+                string requestUri = string.Format(Constants.ToDoApiUri, string.Empty);
                 HttpResponseMessage response = null;
-                response = await _client.PostAsync(string.Format(Constants.ToDoApiUri, string.Empty), content);
+                if (isNewItem)
+                {
+                    response = await _client.PostAsync(requestUri, content);
+                }
+                else
+                {
+                    response = await _client.PutAsync(requestUri, content);
+                }
                 if (response.IsSuccessStatusCode)
                 {
                     Debug.WriteLine("TodoItem successfully saved.");

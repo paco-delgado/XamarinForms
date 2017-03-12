@@ -24,5 +24,18 @@ namespace FluToDoApp.Views
             
             await Task.Run(() => ((ToDoListViewModel)BindingContext).LoadDataCommand.Execute(null));
         }
+
+        private async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (e.Item != null)
+            {
+                await Task.Run(() => ((ToDoListViewModel)BindingContext).ToggleToDoItemStateCommand.Execute(e.Item));
+            }
+        }
+
+        private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            ((ListView)sender).SelectedItem = null;
+        }
     }
 }
