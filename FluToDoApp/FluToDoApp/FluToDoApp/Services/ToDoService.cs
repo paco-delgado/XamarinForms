@@ -21,5 +21,9 @@ namespace FluToDoApp.Services
         {
             return await _toDoApiServiceAgent.GetAllToDoItemsAsync();
         }
+        public async Task AddToDoItemAsync(ToDoItem item)
+        {
+            await _toDoApiServiceAgent.AddToDoItemAsync(item);
+        }
     }
 }

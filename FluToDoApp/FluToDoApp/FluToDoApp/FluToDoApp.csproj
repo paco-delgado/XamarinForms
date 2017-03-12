@@ -45,12 +45,18 @@
     <Compile Include="Data\ToDoApiServiceAgent.cs" />
     <Compile Include="Data\Helper\HttpClientWrapper.cs" />
     <Compile Include="Data\Helper\IHttpClientWrapper.cs" />
+    <Compile Include="Services\IPageService.cs" />
     <Compile Include="Services\IToDoService.cs" />
+    <Compile Include="Services\PageService.cs" />
     <Compile Include="Services\ToDoService.cs" />
     <Compile Include="ViewModelLocator.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\ToDoItemDetailViewModel.cs" />
     <Compile Include="ViewModels\ToDoItemViewModel.cs" />
     <Compile Include="ViewModels\ToDoListViewModel.cs" />
+    <Compile Include="Views\ToDoItemDetailPage.xaml.cs">
+      <DependentUpon>ToDoItemDetailPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ToDoListPage.xaml.cs">
       <DependentUpon>ToDoListPage.xaml</DependentUpon>
     </Compile>
@@ -104,6 +110,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\ToDoListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ToDoItemDetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

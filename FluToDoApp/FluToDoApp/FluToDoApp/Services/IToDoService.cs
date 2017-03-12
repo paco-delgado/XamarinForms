@@ -7,5 +7,6 @@ namespace FluToDoApp.Services
     public interface IToDoService
     {
         Task<List<ToDoItem>> GetAllToDoItemsAsync();
+        Task AddToDoItemAsync(ToDoItem item);
     }
 }

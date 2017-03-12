@@ -10,7 +10,7 @@ namespace FluToDoApp
         {
             InitializeComponent();
 
-            MainPage = new ToDoListPage();
+            MainPage = new NavigationPage(new ToDoListPage());
         }
 
         protected override void OnStart()

@@ -27,6 +27,7 @@ namespace FluToDoApp
             _container.RegisterType<IHttpClientWrapper, HttpClientWrapper>();
             _container.RegisterType<IToDoApiServiceAgent, ToDoApiServiceAgent>();
             _container.RegisterType<IToDoService, ToDoService>();
+            _container.RegisterType<IPageService, PageService>();
             _container.RegisterType<ToDoListViewModel>(new ContainerControlledLifetimeManager());
             var unityServiceLocator = new UnityServiceLocator(_container);
             ServiceLocator.SetLocatorProvider(() => unityServiceLocator);

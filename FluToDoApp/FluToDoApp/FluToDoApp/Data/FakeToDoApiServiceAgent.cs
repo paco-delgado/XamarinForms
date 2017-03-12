@@ -20,5 +20,11 @@ namespace FluToDoApp.Data
             };
             return Task.FromResult(list);
         }
+
+        public Task AddToDoItemAsync(ToDoItem item)
+        {
+            return Task.FromResult(true);
+        }
+
     }
 }

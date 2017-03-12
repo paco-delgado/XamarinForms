@@ -16,5 +16,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Button Text="New" Command="{Binding AddToDoItemCommand}"/>
     </StackLayout>
 </ContentPage>

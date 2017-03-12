@@ -10,8 +10,17 @@ namespace FluToDoApp.ViewModels
     public class ToDoItemViewModel : BaseViewModel
     {
         public string Key { get; set; }
-        public string Name { get; set; }
         public bool IsComplete { get; set; }
+
+        private string _name;
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                SetValue(ref _name, value);
+            }
+        }
 
         // Default constructor for scenarios where we want to instantiate a 
         // blank ToDoItemViewModel object.
