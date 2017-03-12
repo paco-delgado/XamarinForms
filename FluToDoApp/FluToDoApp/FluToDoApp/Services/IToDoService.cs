@@ -8,5 +8,6 @@ namespace FluToDoApp.Services
     {
         Task<List<ToDoItem>> GetAllToDoItemsAsync();
         Task AddToDoItemAsync(ToDoItem item);
+        Task DeleteToDoItemAsync(string key);
     }
 }

@@ -25,5 +25,10 @@ namespace FluToDoApp.Services
         {
             await _toDoApiServiceAgent.AddToDoItemAsync(item);
         }
+
+        public async Task DeleteToDoItemAsync(string key)
+        {
+            await _toDoApiServiceAgent.DeleteToDoItemAsync(key);
+        }
     }
 }

@@ -35,9 +35,9 @@ namespace FluToDoApp.ViewModels
 
             ToDoItem = new ToDoItem
             {
-                Key = viewModel.Key,
+                Key = Guid.NewGuid().ToString(),
                 Name = viewModel.Name,
-                IsComplete = viewModel.IsComplete
+                IsComplete = false
             };
         }
 

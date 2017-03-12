@@ -26,5 +26,9 @@ namespace FluToDoApp.Data
             return Task.FromResult(true);
         }
 
+        public Task DeleteToDoItemAsync(string key)
+        {
+            return Task.FromResult(true);
+        }
     }
 }

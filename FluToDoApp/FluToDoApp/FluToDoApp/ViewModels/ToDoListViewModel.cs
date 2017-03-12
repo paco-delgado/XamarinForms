@@ -19,6 +19,7 @@ namespace FluToDoApp.ViewModels
 
         public ICommand LoadDataCommand { get; private set; }
         public ICommand AddToDoItemCommand { get; private set; }
+        public ICommand DeleteToDoItemCommand { get; private set; }
 
         public ToDoListViewModel(IToDoService toDoService, IPageService pageService)
         {
@@ -26,6 +27,7 @@ namespace FluToDoApp.ViewModels
             _pageService = pageService;
             LoadDataCommand = new Command(async () => await LoadDataAsync());
             AddToDoItemCommand = new Command(async () => await AddToDoItemAsync());
+            DeleteToDoItemCommand = new Command<ToDoItemViewModel>(async i => await DeleteToDoItemAsync(i));
         }
 
         private async Task LoadDataAsync()
@@ -54,6 +56,15 @@ namespace FluToDoApp.ViewModels
             };
 
             await _pageService.PushAsync(new ToDoItemDetailPage(viewModel));
+        }
+
+        private async Task DeleteToDoItemAsync(ToDoItemViewModel toDoItemViewModel)
+        {
+            if (await _pageService.DisplayAlertAsync("Delete", $"Are you sure you want to delete {toDoItemViewModel.Name}?", "Yes", "No"))
+            {
+                ToDoItems.Remove(toDoItemViewModel);
+                await _toDoService.DeleteToDoItemAsync(toDoItemViewModel.Key);
+            }
         }
     }
 }

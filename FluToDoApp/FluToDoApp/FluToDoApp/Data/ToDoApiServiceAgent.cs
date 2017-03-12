@@ -58,7 +58,22 @@ namespace FluToDoApp.Data
             {
                 Debug.WriteLine($"Error occurred calling ToDoApi: {ex.Message}");
             }
+        }
 
+        public async Task DeleteToDoItemAsync(string key)
+        {
+            try
+            {
+                var response = await _client.DeleteAsync(string.Format(Constants.ToDoApiUri, key));
+                if (response.IsSuccessStatusCode)
+                {
+                    Debug.WriteLine("TodoItem successfully deleted.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error occurred calling ToDoApi: {ex.Message}");
+            }
         }
     }
 }
