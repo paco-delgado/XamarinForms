@@ -17,10 +17,21 @@ namespace FluToDoApp.ViewModels
 
         public ObservableCollection<ToDoItemViewModel> ToDoItems { get; private set; } = new ObservableCollection<ToDoItemViewModel>();
 
+        private bool _isRefreshing;
+        public bool IsRefreshing
+        {
+            get { return _isRefreshing; }
+            set
+            {
+                SetValue(ref _isRefreshing, value);
+            }
+        }
+
         public ICommand LoadDataCommand { get; private set; }
         public ICommand AddToDoItemCommand { get; private set; }
         public ICommand DeleteToDoItemCommand { get; private set; }
         public ICommand ToggleToDoItemStateCommand { get; private set; }
+        public ICommand RefreshDataCommand { get; private set; }
 
         public ToDoListViewModel(IToDoService toDoService, IPageService pageService)
         {
@@ -30,11 +41,16 @@ namespace FluToDoApp.ViewModels
             AddToDoItemCommand = new Command(async () => await AddToDoItemAsync());
             DeleteToDoItemCommand = new Command<ToDoItemViewModel>(async i => await DeleteToDoItemAsync(i));
             ToggleToDoItemStateCommand = new Command<ToDoItemViewModel>(async i => await ToggleToDoItemStateAsync(i));
+            RefreshDataCommand = new Command(async () =>
+            {
+                await LoadDataAsync();
+                IsRefreshing = false;
+            });
         }
 
         private async Task LoadDataAsync()
         {
-            if (_isDataLoaded)
+            if (_isDataLoaded && !_isRefreshing)
                 return;
 
             _isDataLoaded = true;
