@@ -1,2 +1,11 @@
-# XamarinForms
-Xamarin Forms
+# TODO List with Xamarin Forms
+- Application that helps users keep a balanced life organizing themselves with a list of “ToDo” tasks
+- The application allows users to perform the following tasks:
+  - List all the items of the ToDo list
+  - Mark existing items as “Done”
+  - Create new ToDo items
+  - Delete existing items
+- Use Xamarin and Xamarin.Forms as UI toolkit to have a high ratio of code reuse across platform
+- This application uses a service in the cloud to work with the ToDo items through a Rest API. (Not included in this project)
+- Use of async API’s
+- Use of the design pattern MVVM
